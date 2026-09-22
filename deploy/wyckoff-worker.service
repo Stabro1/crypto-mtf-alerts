@@ -1,0 +1,19 @@
+[Unit]
+Description=Wyckoff MTF alert worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/wyckoff-worker
+ExecStart=/usr/bin/node /opt/wyckoff-worker/worker.mjs
+Restart=always
+RestartSec=10
+EnvironmentFile=/opt/wyckoff-worker/.env
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

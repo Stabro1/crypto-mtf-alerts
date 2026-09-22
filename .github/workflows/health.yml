@@ -1,0 +1,24 @@
+name: Wyckoff health check
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check latest generated health file
+        env:
+          RAW_URL: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/public/health.json
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request, datetime
+          try:
+              d=json.load(urllib.request.urlopen(os.environ['RAW_URL'], timeout=10))
+              t=datetime.datetime.fromisoformat(d['generatedAt'].replace('Z','+00:00'))
+              age=(datetime.datetime.now(datetime.timezone.utc)-t).total_seconds()/60
+              print(d)
+              if age > 35 or not d.get('ok'): raise SystemExit('Wyckoff health is stale or failed')
+          except Exception as e:
+              print(e); raise
+          PY
