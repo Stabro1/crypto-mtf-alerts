@@ -1,0 +1,29 @@
+{
+  "ok": false,
+  "generatedAt": "2026-09-22T15:40:53.453Z",
+  "trackedCoins": 55,
+  "alerts": 0,
+  "errorCount": 59,
+  "errors": [
+    "ETC/1d:429",
+    "KAS/15m:429",
+    "KAS/1h:429",
+    "ALGO/15m:429",
+    "KAS/4h:429",
+    "POL/4h:429",
+    "ALGO/1h:429",
+    "KAS/1d:429",
+    "POL/1d:429",
+    "ALGO/4h:429",
+    "JUP/15m:429",
+    "RENDER/15m:429",
+    "ALGO/1d:429",
+    "JUP/1h:429",
+    "RENDER/1h:429",
+    "ATOM/15m:429",
+    "JUP/4h:429",
+    "RENDER/4h:429",
+    "ATOM/1h:429",
+    "JUP/1d:429"
+  ]
+}
